@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HolistiX — A Brief for LEAR Skopje</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #f5f0e8;
+    --gold: #b8943f;
+    --gold-light: #d4af6a;
+    --mist: #e8e2d6;
+    --deep: #0f0f1e;
+    --accent: #8b6914;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8vw 10vw;
+    position: relative;
+    background: var(--deep);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,148,63,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #f0ebe0;
+    line-height: 1.3;
+    max-width: 820px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.5s;
+  }
+
+  .hero-quote em {
+    color: var(--gold-light);
+    font-style: normal;
+  }
+
+  .hero-attribution {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: rgba(240,235,224,0.45);
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.9s;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 3rem;
+    left: 10vw;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: rgba(240,235,224,0.3);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.4s;
+  }
+
+  .scroll-line {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 8vw 10vw;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── REFRAME ── */
+  .reframe {
+    background: var(--paper);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6vw;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .reframe { grid-template-columns: 1fr; }
+  }
+
+  .reframe-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .reframe-title strong {
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .reframe-body p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #3a3a4a;
+    margin-bottom: 1.4rem;
+  }
+
+  .reframe-body p:last-child { margin-bottom: 0; }
+
+  /* ── PAIN EXPLORER ── */
+  .explorer {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .explorer-intro {
+    max-width: 580px;
+    margin-bottom: 4rem;
+  }
+
+  .explorer-intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    color: #f0ebe0;
+  }
+
+  .explorer-intro p {
+    color: rgba(240,235,224,0.55);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  .scenario-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    opacity: 0.7;
+    color: var(--gold-light);
+  }
+
+  .scenario-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #f0ebe0;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+
+  .scenario-sub {
+    font-size: 0.75rem;
+    color: rgba(240,235,224,0.35);
+    letter-spacing: 0.05em;
+  }
+
+  .panel-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.4;
+    margin-bottom: 1.8rem;
+    max-width: 680px;
+  }
+
+  .panel-body {
+    color: rgba(240,235,224,0.7);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    max-width: 680px;
+    margin-bottom: 1.8rem;
+  }
+
+  .panel-insight {
+    display: inline-block;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.2rem;
+    font-size: 0.9rem;
+    color: rgba(240,235,224,0.5);
+    font-style: italic;
+    max-width: 560px;
+    line-height: 1.6;
+  }
+
+  /* ── APPROACH ── */
+  .approach {
+    background: var(--mist);
+  }
+
+  .approach-header {
+    max-width: 640px;
+    margin-bottom: 5rem;
+  }
+
+  .approach-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.25;
+    margin-bottom: 1.2rem;
+    color: var(--ink);
+  }
+
+  .approach-header p {
+    color: #4a4a5a;
+    line-height: 1.8;
+    font-size: 0.95rem;
+  }
+
+  .card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: rgba(184,148,63,0.25);
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .card-teaser {
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── DIFFERENTIATOR ── */
+  .differ {
+    background: var(--deep);
+    color: var(--paper);
+  }
+
+  .differ-intro h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.3;
+    color: #f0ebe0;
+    max-width: 600px;
+    margin-bottom: 4rem;
+  }
+
+  .differ-intro h2 em {
+    color: var(--gold-light);
+    font-style: normal;
+  }
+
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(184,148,63,0.1);
+    max-width: 900px;
+  }
+
+  @media (max-width: 640px) { .compare { grid-template-columns: 1fr; } }
+
+  .compare-col {
+    padding: 2.5rem 2rem;
+  }
+
+  .compare-col.standard { background: rgba(255,255,255,0.03); }
+  .compare-col.holistic { background: rgba(184,148,63,0.07); }
+
+  .compare-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .compare-col.standard .compare-label { color: rgba(240,235,224,0.3); }
+  .compare-col.holistic .compare-label { color: var(--gold); }
+
+  .compare-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .compare-col.standard .compare-item { color: rgba(240,235,224,0.4); }
+  .compare-col.holistic .compare-item { color: rgba(240,235,224,0.85); }
+
+  .compare-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+  }
+
+  .compare-col.standard .compare-dot { background: rgba(240,235,224,0.2); }
+  .compare-col.holistic .compare-dot { background: var(--gold); }
+
+  /* ── CREDENTIALS ── */
+  .creds {
+    background: var(--paper);
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 6vw;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) { .creds { grid-template-columns: 1fr; } }
+
+  .creds-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+  }
+
+  .creds-left p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #4a4a5a;
+    margin-bottom: 2rem;
+  }
+
+  .cred-tag {
+    display: inline-block;
+    border: 1px solid rgba(184,148,63,0.4);
+    color: var(--accent);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    margin: 0.25rem 0.25rem 0 0;
+  }
+
+  .creds-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .stat-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(184,148,63,0.15);
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .stat-desc {
+    font-size: 0.88rem;
+    color: #5a5a6a;
+    line-height: 1.5;
+  }
+
+  /* ── CLOSING ── */
+  .closing {
+    background: var(--ink);
+    text-align: center;
+    padding: 10vw;
+  }
+
+  .closing-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  .closing-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #f0ebe0;
+    line-height: 1.4;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+
+  .closing-quote em {
+    color: var(--gold-light);
+    font-style: normal;
+  }
+
+  .closing-meta {
+    font-size: 0.85rem;
+    color: rgba(240,235,224,0.4);
+    letter-spacing: 0.08em;
+    line-height: 2;
+  }
+
+  .closing-meta a {
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+
+  .closing-date {
+    margin-top: 3rem;
+    display: inline-block;
+    border: 1px solid rgba(184,148,63,0.3);
+    padding: 0.9rem 2.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,235,224,0.5);
+  }
+
+  /* ── COLLATERAL ── */
+  .collateral {
+    background: var(--deep);
+    color: var(--paper);
+    padding: 8vw 10vw;
+  }
+
+  .collateral-inner { margin-bottom: 3.5rem; }
+
+  .collateral-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.25;
+    color: #f0ebe0;
+    margin-bottom: 0.8rem;
+  }
+
+  .collateral-sub {
+    color: rgba(240,235,224,0.4);
+    font-size: 0.9rem;
+    font-style: italic;
+    letter-spacing: 0.05em;
+  }
+
+  .collateral-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2px;
+    background: rgba(184,148,63,0.1);
+    margin-bottom: 3rem;
+  }
+
+  .collateral-card {
+    background: #16162a;
+    padding: 2rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .collateral-skill {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--gold-light);
+  }
+
+  .collateral-arrow {
+    color: rgba(184,148,63,0.3);
+    font-size: 1rem;
+  }
+
+  .collateral-source {
+    font-size: 0.85rem;
+    color: rgba(240,235,224,0.55);
+    line-height: 1.7;
+  }
+
+  .collateral-source em {
+    color: rgba(240,235,224,0.8);
+    font-style: normal;
+  }
+
+  .collateral-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: rgba(184,148,63,0.6);
+    max-width: 600px;
+    line-height: 1.5;
+    border-left: 2px solid rgba(184,148,63,0.2);
+    padding-left: 1.5rem;
+  }
+
+  /* ── FORMATS ── */
+  .formats {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 8vw 10vw;
+  }
+
+  .formats-header {
+    max-width: 580px;
+    margin-bottom: 4rem;
+  }
+
+  .formats-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 300;
+    color: #f0ebe0;
+    line-height: 1.3;
+    margin-bottom: 0.8rem;
+  }
+
+  .formats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2px;
+    background: rgba(184,148,63,0.1);
+    margin-bottom: 3rem;
+  }
+
+  .format-card {
+    background: #16162a;
+    padding: 2.2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: background 0.3s;
+  }
+
+  .format-card:hover { background: #1e1e35; }
+
+  .format-card.format-highlighted {
+    background: rgba(184,148,63,0.08);
+    border-top: 2px solid var(--gold);
+  }
+
+  .format-tag {
+    font-size: 0.63rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .format-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #f0ebe0;
+    line-height: 1.2;
+  }
+
+  .format-duration {
+    font-size: 0.75rem;
+    color: rgba(240,235,224,0.35);
+    letter-spacing: 0.05em;
+  }
+
+  .format-desc {
+    font-size: 0.85rem;
+    color: rgba(240,235,224,0.55);
+    line-height: 1.7;
+    margin-top: 0.4rem;
+  }
+
+  .formats-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(184,148,63,0.55);
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  /* ── DETAILS/SUMMARY ACCORDIONS ── */
+  details { list-style: none; }
+  details summary { list-style: none; }
+  details summary::-webkit-details-marker { display: none; }
+
+  /* Scenario accordion */
+  .scenarios {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: rgba(184,148,63,0.1);
+  }
+
+  .scenario-item { background: var(--ink); }
+
+  .scenario-btn {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+    padding: 2rem 2rem;
+    cursor: pointer;
+    background: var(--ink);
+    border: none;
+    text-align: left;
+    transition: background 0.3s;
+  }
+
+  .scenario-item[open] > .scenario-btn,
+  .scenario-btn:hover { background: #22223a; }
+
+  .scenario-txt {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .scenario-arrow {
+    color: var(--gold);
+    opacity: 0.5;
+    font-size: 1.1rem;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .scenario-item[open] .scenario-arrow { transform: rotate(180deg); opacity: 1; }
+
+  .scenario-panel {
+    padding: 2.5rem 2.5rem 2.5rem 4.5rem;
+    background: #1a1a30;
+    border-bottom: 2px solid var(--gold);
+    animation: fadeIn 0.35s ease;
+  }
+
+  /* Approach accordion */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    background: rgba(184,148,63,0.2);
+  }
+
+  .approach-item { background: var(--mist); }
+
+  .approach-card {
+    display: block;
+    background: var(--mist);
+    padding: 2.5rem 2rem 2rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+  }
+
+  .approach-item[open] > .approach-card,
+  .approach-card:hover { background: #ddd8cc; }
+
+  .approach-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--gold);
+    transition: height 0.4s ease;
+  }
+
+  .approach-card:hover::before,
+  .approach-item[open] > .approach-card::before { height: 100%; }
+
+  .card-detail {
+    background: #ddd8cc;
+    padding: 0 2rem 2rem 2rem;
+    font-size: 0.9rem;
+    color: #4a4a5a;
+    line-height: 1.75;
+    animation: fadeIn 0.3s ease;
+    border-bottom: 2px solid rgba(184,148,63,0.3);
+  }
+
+  /* ── AI SECTION ── */
+  .ai-section {
+    background: var(--mist);
+    padding: 8vw 10vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6vw;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) { .ai-section { grid-template-columns: 1fr; } }
+
+  .ai-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 1.8rem;
+  }
+
+  .ai-title em { color: var(--gold); font-style: normal; }
+
+  .ai-body {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #3a3a4a;
+    margin-bottom: 1.2rem;
+  }
+
+  .ai-body strong { color: var(--ink); font-weight: 500; }
+
+  .ai-credential {
+    margin-top: 2rem;
+    padding: 1.4rem 1.6rem;
+    border: 1px solid rgba(184,148,63,0.3);
+    font-size: 0.85rem;
+    color: #5a5a6a;
+    line-height: 1.7;
+  }
+
+  .ai-cred-line {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  .ai-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(184,148,63,0.15);
+    margin-bottom: 1.5rem;
+  }
+
+  .ai-card {
+    background: var(--mist);
+    padding: 1.8rem 1.5rem;
+  }
+
+  .ai-card-visual {
+    padding: 0;
+    overflow: hidden;
+    background: #e2dace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+  }
+
+  .ai-card-icon {
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    opacity: 0.7;
+  }
+
+  .ai-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .ai-card-text {
+    font-size: 0.8rem;
+    color: #5a5a6a;
+    line-height: 1.65;
+  }
+
+  .ai-tested {
+    font-size: 0.78rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    border-top: 1px solid rgba(184,148,63,0.2);
+    padding-top: 1rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <p class="hero-label">HolistiX — Prepared for LEAR Skopje · March 2026</p>
+  <blockquote class="hero-quote">
+    "The quality of an intervention depends on the <em>inner condition</em> of the intervener."
+  </blockquote>
+  <p class="hero-attribution">— Bill O'Brien, CEO Hanover Insurance &nbsp;·&nbsp; cited in Theory U, Otto Scharmer / MIT</p>
+  <div class="scroll-cue">
+    <span class="scroll-line"></span>
+    Explore
+  </div>
+</section>
+
+
+<!-- ── REFRAME ── -->
+<section class="reframe">
+  <div class="reveal">
+    <p class="section-label">The Real Starting Point</p>
+    <h2 class="reframe-title">
+      Skills are the surface.<br>
+      <strong>Source is what matters.</strong>
+    </h2>
+  </div>
+  <div class="reframe-body reveal">
+    <p>
+      When you hire someone directly from university, you acquire their knowledge, their enthusiasm, and their potential. What you rarely get — and rarely develop — is the <em>ground</em> they operate from: their awareness of self, their capacity to truly listen, their ability to act from intention rather than reaction.
+    </p>
+    <p>
+      Most training programs address outputs: how to communicate better, how to manage change, how to solve problems under pressure. These are real skills. But they are downstream of something more fundamental.
+    </p>
+    <p>
+      HolistiX works upstream. We work with <em>the quality of attention and presence</em> each person brings to their role — and we do this systematically, grounded in MIT's Theory U framework and the precision of Robert Dilts' NLP practice.
+    </p>
+  </div>
+</section>
+
+
+<!-- ── COLLATERAL BENEFITS ── -->
+<section class="collateral">
+  <div class="collateral-inner reveal">
+    <p class="section-label">What You Asked For</p>
+    <h2 class="collateral-title">Communication. Problem-solving.<br>Change management. Operational resilience.</h2>
+    <p class="collateral-sub">These are exactly the right goals. Here is what produces them.</p>
+  </div>
+  <div class="collateral-grid reveal">
+    <div class="collateral-card">
+      <div class="collateral-skill">Communication</div>
+      <div class="collateral-arrow">→</div>
+      <div class="collateral-source">Emerges when people learn to listen beyond their own assumptions. We call this moving from <em>Level 1 to Level 3 listening</em> — a core Theory U practice.</div>
+    </div>
+    <div class="collateral-card">
+      <div class="collateral-skill">Problem-solving</div>
+      <div class="collateral-arrow">→</div>
+      <div class="collateral-source">Deepens when individuals stop reacting from habit and start responding from genuine understanding of a situation. This is the shift from downloading to sensing — the U process made practical.</div>
+    </div>
+    <div class="collateral-card">
+      <div class="collateral-skill">Change management</div>
+      <div class="collateral-arrow">→</div>
+      <div class="collateral-source">Becomes natural when people's beliefs about change — and their role in it — are addressed directly. NLP's neurological levels work makes this precise and personal, not generic.</div>
+    </div>
+    <div class="collateral-card">
+      <div class="collateral-skill">Fast-paced environment</div>
+      <div class="collateral-arrow">→</div>
+      <div class="collateral-source">Becomes sustainable when teams develop the habit of <em>deliberate presence</em> — the capacity to act quickly without losing awareness. Speed and depth are not opposites. They are a skill.</div>
+    </div>
+  </div>
+  <p class="collateral-note reveal">"We do not teach these as subjects. They arrive as consequences — of doing the deeper work well."</p>
+</section>
+
+<!-- ── PAIN EXPLORER ── -->
+<section class="explorer">
+  <div class="explorer-intro reveal">
+    <p class="section-label">Recognize the Pattern</p>
+    <h2>The challenges you're<br>already living with</h2>
+    <p>These are not hypothetical scenarios. Select any one — and explore what's actually happening beneath the surface.</p>
+  </div>
+
+  <div class="scenarios reveal">
+
+    <details class="scenario-item">
+      <summary class="scenario-btn">
+        <span class="scenario-icon">✦</span>
+        <span class="scenario-txt">
+          <span class="scenario-title">The Star Who Plays Solo</span>
+          <span class="scenario-sub">High performer · Low collaboration</span>
+        </span>
+        <span class="scenario-arrow">↓</span>
+      </summary>
+      <div class="scenario-panel">
+        <p class="panel-quote">"She delivers results no one else can match — and the team is quietly falling apart around her."</p>
+        <p class="panel-body">When an individual's effectiveness is decoupled from their systemic impact, you have a performance illusion. The star performer has learned — often unconsciously — that their identity is their output. Recognition comes from individual excellence, not from what they enable in others. This pattern is not a character flaw. It is a logical response to how they were shaped, at university and in early career.</p>
+        <p class="panel-body">What looks like arrogance or unwillingness to collaborate is almost always an underdeveloped capacity to <em>genuinely register the other</em> — to listen from a place beyond judgment and comparison. That capacity can be developed. But not through a workshop on teamwork.</p>
+        <p class="panel-insight">HolistiX works at the level of identity and belief — specifically on the internal "score" a person keeps, and what they believe their role in a system actually is. This is Robert Dilts' neurological levels work applied to live operational reality.</p>
+      </div>
+    </details>
+
+    <details class="scenario-item">
+      <summary class="scenario-btn">
+        <span class="scenario-icon">⬡</span>
+        <span class="scenario-txt">
+          <span class="scenario-title">The Generation Divide</span>
+          <span class="scenario-sub">Gen Z meets established norms</span>
+        </span>
+        <span class="scenario-arrow">↓</span>
+      </summary>
+      <div class="scenario-panel">
+        <p class="panel-quote">"They are confident, capable, and completely perplexed by how slowly we move."</p>
+        <p class="panel-body">Generation Z enters the workforce with something previous generations often had to acquire the hard way: a relatively clear sense of personal values and a strong intolerance for misalignment. They do not lack motivation. They lack a <em>bridge</em> — between what they believe they're capable of and what the organization actually asks of them day to day.</p>
+        <p class="panel-body">When that bridge is missing, you see disengagement that looks like entitlement, boundary-setting that looks like resistance, and departure that looks like disloyalty. None of these are accurate. They are symptoms of a system that hasn't yet learned to speak their language — not socially, but structurally.</p>
+        <p class="panel-insight">Our approach begins with the individual's own map of ambition and contribution. We don't fit people into roles. We surface what they care about and construct a visible connection between that and the operational context of LEAR. That connection is what creates lasting engagement.</p>
+      </div>
+    </details>
+
+    <details class="scenario-item">
+      <summary class="scenario-btn">
+        <span class="scenario-icon">◈</span>
+        <span class="scenario-txt">
+          <span class="scenario-title">Speed Without Depth</span>
+          <span class="scenario-sub">Fast-paced environment · Reactive culture</span>
+        </span>
+        <span class="scenario-arrow">↓</span>
+      </summary>
+      <div class="scenario-panel">
+        <p class="panel-quote">"We solve the same problem for the fourth time because we never had the space to understand it the first."</p>
+        <p class="panel-body">A fast-paced logistics environment creates a specific cognitive culture: reward goes to the person who acts fastest, not to the one who understands most. Over time, this shapes the team's relationship with uncertainty. Slowing down to sense a situation more fully begins to feel like weakness — or worse, like a luxury.</p>
+        <p class="panel-body">The result is a team that is highly reactive and exhausting to sustain. Not because people lack capability, but because the <em>habit of presence</em> — of genuinely registering what a situation requires before responding — has never been cultivated.</p>
+        <p class="panel-insight">Theory U's first and most critical practice is the deepening of listening — from listening to confirm, to listening to learn, to listening to sense emergence. This is teachable, measurable, and directly transferable to planning and coordination work.</p>
+      </div>
+    </details>
+
+    <details class="scenario-item">
+      <summary class="scenario-btn">
+        <span class="scenario-icon">◎</span>
+        <span class="scenario-txt">
+          <span class="scenario-title">The Meeting That Changed Nothing</span>
+          <span class="scenario-sub">Alignment discussed · Nothing shifted</span>
+        </span>
+        <span class="scenario-arrow">↓</span>
+      </summary>
+      <div class="scenario-panel">
+        <p class="panel-quote">"Everyone agreed in the room. Three weeks later, nothing had moved."</p>
+        <p class="panel-body">Most organizational conversations happen at what Otto Scharmer calls Level 1: downloading. People speak from habit, from position, from what they know the room expects to hear. Agreement is reached quickly because no one has said anything genuinely new. Then everyone returns to their desks and continues exactly as before — because nothing in them has actually shifted.</p>
+        <p class="panel-body">Real alignment — the kind that produces consistent behavior change — requires a different quality of conversation. One in which people are willing to surface what they actually think, including doubt, including contradiction, including the thing they've been managing around for two years.</p>
+        <p class="panel-insight">We don't facilitate meetings. We cultivate the conditions under which people can have the conversations that matter. This is a skill, and like all skills, it requires practice in a supported environment — which is exactly what our embedded program provides.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+
+<!-- ── APPROACH ── -->
+<section class="approach">
+  <div class="approach-header reveal">
+    <p class="section-label">How We Work</p>
+    <h2>Not a program you attend.<br>A process you inhabit.</h2>
+    <p>Click each phase to understand what actually happens — and why the sequence matters.</p>
+  </div>
+
+  <div class="approach-grid reveal">
+
+    <details class="approach-item">
+      <summary class="approach-card">
+        <div class="card-num">01</div>
+        <div class="card-title">Mapping the Territory</div>
+        <div class="card-teaser">Individual + System · Week 1–2</div>
+      </summary>
+      <div class="card-detail">We begin with each participant — not as a role, but as a person. Through structured one-to-one conversations we map their values, their current sense of contribution, and the gap they perceive between who they are and what the job asks of them. Simultaneously we map the team system: where trust flows easily, where it doesn't, and why. This is not a survey. It is the beginning of the actual work.</div>
+    </details>
+
+    <details class="approach-item">
+      <summary class="approach-card">
+        <div class="card-num">02</div>
+        <div class="card-title">Deepening the Listening</div>
+        <div class="card-teaser">Awareness Practice · Month 1</div>
+      </summary>
+      <div class="card-detail">Using Theory U's co-sensing methodology, we introduce a practice that most operational teams have never experienced: listening not to respond, but to understand the full reality of another person's situation. We do this through structured exercises drawn from the MIT u-lab curriculum, adapted to the LEAR operational context. The goal is not insight. It is a change in habit — the habit of attention.</div>
+    </details>
+
+    <details class="approach-item">
+      <summary class="approach-card">
+        <div class="card-num">03</div>
+        <div class="card-title">Working the Beliefs</div>
+        <div class="card-teaser">NLP · Personal Change · Month 2–3</div>
+      </summary>
+      <div class="card-detail">This is where Robert Dilts' neurological levels model becomes our primary tool. We work with each participant's beliefs about themselves, their role, and their organization. Not through confrontation — through guided inquiry that surfaces the assumptions driving current behavior, and creates the internal conditions for new behavior to take root. This is precise, evidence-based work that produces visible changes in how people show up in team settings.</div>
+    </details>
+
+    <details class="approach-item">
+      <summary class="approach-card">
+        <div class="card-num">04</div>
+        <div class="card-title">Co-Creating New Patterns</div>
+        <div class="card-teaser">Team Level · Month 3–5</div>
+      </summary>
+      <div class="card-detail">Individual change is necessary but not sufficient. In this phase we work at the team level to translate individual shifts into shared practices — new rituals, new communication norms, new ways of resolving conflict before it becomes friction. These emerge from the group itself, facilitated by our team. We don't install solutions. We create the conditions for the group to author their own.</div>
+    </details>
+
+    <details class="approach-item">
+      <summary class="approach-card">
+        <div class="card-num">05</div>
+        <div class="card-title">Embedding &amp; Sustaining</div>
+        <div class="card-teaser">Continuity · Month 5–6</div>
+      </summary>
+      <div class="card-detail">The final phase is about transfer of ownership. We work with team leaders and HR to identify the practices that have taken hold and build the internal capacity to sustain them. We document observable changes. We identify one or two individuals who can serve as anchors for the new culture. We design a lightweight check-in rhythm that doesn't require external facilitation. The work is done when it no longer needs us.</div>
+    </details>
+
+    <details class="approach-item">
+      <summary class="approach-card">
+        <div class="card-num">06</div>
+        <div class="card-title">Measuring What Matters</div>
+        <div class="card-teaser">Outcomes · Throughout</div>
+      </summary>
+      <div class="card-detail">We track three things: the quality of team interactions (observable, not self-reported), individual engagement and clarity of purpose (quarterly), and operational indicators that LEAR already measures — retention, error rates, escalation frequency. We don't invent metrics. We connect our work to yours.</div>
+    </details>
+
+  </div>
+</section>
+
+
+<!-- ── DIFFERENTIATOR ── -->
+<section class="differ">
+  <div class="differ-intro reveal">
+    <p class="section-label">The Difference</p>
+    <h2>Most training builds <em>capability.</em><br>We develop <em>consciousness.</em></h2>
+  </div>
+
+  <div class="compare reveal">
+    <div class="compare-col standard">
+      <p class="compare-label">Conventional Approach</p>
+      <div class="compare-item"><span class="compare-dot"></span><span>Skills modules with defined learning outcomes</span></div>
+      <div class="compare-item"><span class="compare-dot"></span><span>Trainer delivers content to the group</span></div>
+      <div class="compare-item"><span class="compare-dot"></span><span>Behavior change expected post-training</span></div>
+      <div class="compare-item"><span class="compare-dot"></span><span>Same program adapted for each client</span></div>
+      <div class="compare-item"><span class="compare-dot"></span><span>Engagement ends when workshop ends</span></div>
+      <div class="compare-item"><span class="compare-dot"></span><span>Measured by attendance and satisfaction</span></div>
+    </div>
+    <div class="compare-col holistic">
+      <p class="compare-label">HolistiX</p>
+      <div class="compare-item"><span class="compare-dot"></span><span>Embedded presence over <em style="color:var(--gold-light);font-style:normal;">X months</em> in your system — duration follows what the work requires</span></div>
+      <div class="compare-item"><span class="compare-dot"></span><span>Individual attention to each participant's inner terrain</span></div>
+      <div class="compare-item"><span class="compare-dot"></span><span>Behavior shifts emerge from belief and identity work</span></div>
+      <div class="compare-item"><span class="compare-dot"></span><span>Every program designed from your specific context</span></div>
+      <div class="compare-item"><span class="compare-dot"></span><span>Continuity — we remain present until patterns stabilize</span></div>
+      <div class="compare-item"><span class="compare-dot"></span><span>Measured by observable operational change</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── AI SECTION ── -->
+<section class="ai-section">
+  <div class="ai-left reveal">
+    <p class="section-label">The Unexpected Advantage</p>
+    <h2 class="ai-title">AI is not a threat<br>to your Gen Z team.<br><em>It is the door in.</em></h2>
+    <p class="ai-body">
+      Generation Z is the first workforce cohort that does not experience technology as a tool they learned — it is the medium through which they think, relate, and process reality. A smartphone is not an instrument for them. It is an extension of cognition.
+    </p>
+    <p class="ai-body">
+      This creates a specific opportunity that most L&amp;D programs miss entirely: <strong>AI-assisted development works with Gen Z's existing cognitive habits, not against them.</strong> When you meet people in the medium they trust, they engage differently.
+    </p>
+    <p class="ai-body">
+      HolistiX integrates AI-human collaboration practices into our transformation work — not as a separate module, but as a thread woven through the process. Self-awareness work that doesn't ask Gen Z to slow down — it meets them where they already are, and expands from there.
+    </p>
+    <div class="ai-credential">
+      <span class="ai-cred-line">Grounded in practice, not theory:</span>
+      Nebojsha Ilijevski holds an MA in AI &amp; Blockchain Applications to Sustainable Processes alongside his engineering background — bringing technical fluency to the human side of machine-human collaboration.
+    </div>
+  </div>
+  <div class="ai-right reveal">
+    <div class="ai-cards">
+      <div class="ai-card">
+        <div class="ai-card-icon">⬡</div>
+        <div class="ai-card-title">AI as Mirror</div>
+        <div class="ai-card-text">Participants use AI tools to surface their own communication patterns — seeing themselves from the outside, in a medium they don't resist.</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-icon">◈</div>
+        <div class="ai-card-title">Habit Architecture</div>
+        <div class="ai-card-text">We use technology-native micro-practices to build new behavioral routines — designed for people already in a constant feedback loop with their devices.</div>
+      </div>
+      <div class="ai-card">
+        <div class="ai-card-icon">◎</div>
+        <div class="ai-card-title">Human-AI Teaming</div>
+        <div class="ai-card-text">How does a planning &amp; logistics team integrate AI tools without losing the human judgment that makes them irreplaceable? That is our question too.</div>
+      </div>
+      <div class="ai-card ai-card-visual">
+        <svg viewBox="0 0 260 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;min-height:200px;">
+          <defs>
+            <radialGradient id="gv1" cx="50%" cy="45%" r="50%">
+              <stop offset="0%" stop-color="#b8943f" stop-opacity="0.13"/>
+              <stop offset="100%" stop-color="#b8943f" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="gv2" cx="50%" cy="70%" r="40%">
+              <stop offset="0%" stop-color="#6a8fd4" stop-opacity="0.11"/>
+              <stop offset="100%" stop-color="#6a8fd4" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="130" cy="140" rx="110" ry="120" fill="url(#gv1)"/>
+          <ellipse cx="130" cy="230" rx="90" ry="80" fill="url(#gv2)"/>
+          <!-- human -->
+          <circle cx="130" cy="62" r="19" fill="none" stroke="#b8943f" stroke-width="1.1" opacity="0.75"/>
+          <line x1="130" y1="81" x2="130" y2="140" stroke="#b8943f" stroke-width="1.1" opacity="0.65"/>
+          <line x1="130" y1="103" x2="106" y2="126" stroke="#b8943f" stroke-width="1.1" opacity="0.65"/>
+          <line x1="130" y1="103" x2="154" y2="126" stroke="#b8943f" stroke-width="1.1" opacity="0.65"/>
+          <line x1="130" y1="140" x2="112" y2="182" stroke="#b8943f" stroke-width="1.1" opacity="0.65"/>
+          <line x1="130" y1="140" x2="148" y2="182" stroke="#b8943f" stroke-width="1.1" opacity="0.65"/>
+          <!-- connection curves -->
+          <path d="M112 182 C102 205 104 224 130 228" fill="none" stroke="#b8943f" stroke-width="0.8" opacity="0.28"/>
+          <path d="M148 182 C158 205 156 224 130 228" fill="none" stroke="#6a8fd4" stroke-width="0.8" opacity="0.28"/>
+          <!-- orbital rings -->
+          <ellipse cx="130" cy="206" rx="36" ry="12" fill="none" stroke="rgba(184,148,63,0.18)" stroke-width="1" transform="rotate(-16,130,206)"/>
+          <ellipse cx="130" cy="206" rx="36" ry="12" fill="none" stroke="rgba(106,143,212,0.18)" stroke-width="1" transform="rotate(16,130,206)"/>
+          <!-- machine -->
+          <circle cx="130" cy="262" r="18" fill="none" stroke="#6a8fd4" stroke-width="1" stroke-dasharray="3 2.5" opacity="0.5"/>
+          <rect x="122" y="254" width="16" height="16" rx="2" fill="none" stroke="#6a8fd4" stroke-width="0.8" opacity="0.38"/>
+          <!-- particles -->
+          <circle cx="80" cy="135" r="2" fill="#b8943f" opacity="0.32"/>
+          <circle cx="180" cy="135" r="2" fill="#b8943f" opacity="0.32"/>
+          <circle cx="90" cy="225" r="1.5" fill="#6a8fd4" opacity="0.28"/>
+          <circle cx="170" cy="225" r="1.5" fill="#6a8fd4" opacity="0.28"/>
+          <!-- labels -->
+          <text x="130" y="32" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8" fill="rgba(240,235,224,0.28)" letter-spacing="2.5">HUMAN</text>
+          <text x="130" y="298" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="8" fill="rgba(106,143,212,0.38)" letter-spacing="2.5">MACHINE</text>
+          <text x="130" y="212" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="7" fill="rgba(184,148,63,0.35)" letter-spacing="2">collaboration</text>
+        </svg>
+      </div>
+    </div>
+    <p class="ai-tested">
+      ✓ &nbsp;Tested and refined in embedded programs with Gen Z-majority teams across the Balkans
+    </p>
+  </div>
+</section>
+
+<!-- ── ENGAGEMENT FORMATS ── -->
+<section class="formats">
+  <div class="formats-header reveal">
+    <p class="section-label">How We Enter</p>
+    <h2>Every engagement begins with listening.<br>The format follows from that.</h2>
+  </div>
+  <div class="formats-grid reveal">
+    <div class="format-card">
+      <div class="format-tag">First conversation</div>
+      <div class="format-name">Discovery Session</div>
+      <div class="format-duration">Half day · On-site</div>
+      <div class="format-desc">We come to understand your context — not to present solutions. One session, no deliverable except mutual clarity on whether there is a genuine fit.</div>
+    </div>
+    <div class="format-card format-highlighted">
+      <div class="format-tag">Most common starting point</div>
+      <div class="format-name">Pilot Intervention</div>
+      <div class="format-duration">4–6 weeks · One group · Up to 15</div>
+      <div class="format-desc">A focused entry into one team — enough depth to produce real experience of the methodology, and a concrete shared question to carry forward. This is what we recommend before any longer commitment.</div>
+    </div>
+    <div class="format-card">
+      <div class="format-tag">Full transformation</div>
+      <div class="format-name">Embedded Program</div>
+      <div class="format-duration">6 months · Selected team</div>
+      <div class="format-desc">The full arc — from individual mapping to stable new patterns at team level. Designed for organizations ready to invest in change that lasts after we leave.</div>
+    </div>
+    <div class="format-card">
+      <div class="format-tag">Parallel track</div>
+      <div class="format-name">AI Integration Strand</div>
+      <div class="format-duration">Modular · Woven in or standalone</div>
+      <div class="format-desc">Human-AI collaboration practices, habit architecture for tech-native teams, and AI literacy framed around your operational context. Can run alongside any of the above.</div>
+    </div>
+  </div>
+  <p class="formats-note reveal">We do not propose a format until we have heard your situation in person. March 16th is exactly the right first step.</p>
+</section>
+
+<!-- ── CREDENTIALS ── -->
+<section class="creds">
+  <div class="reveal">
+    <p class="section-label">About HolistiX</p>
+    <h2 class="creds-left">Led by Nebojsha Ilijevski</h2>
+    <p class="creds-left">25 years at the intersection of organizational systems, human development, and awareness-based change. Certified by MIT's Presencing Institute in Theory U methodology and by Robert Dilts — the architect of NLP's neurological levels model — as Master NLP Trainer.</p>
+    <p class="creds-left">HolistiX operates across the Western Balkans and is expanding into the Barcelona market. Our Social Mentoring methodology — co-developed with Public Skopje — is a legally accredited educational program in North Macedonia, certified by the Ministry of Education and deployed across five Balkan countries.</p>
+    <div>
+      <span class="cred-tag">MIT Presencing Institute</span>
+      <span class="cred-tag">NLP Master Trainer · Dilts</span>
+      <span class="cred-tag">Social Presencing Theater</span>
+      <span class="cred-tag">Theory U Certified</span>
+    </div>
+  </div>
+  <div class="creds-right reveal">
+    <div class="stat-row">
+      <span class="stat-num">15,000+</span>
+      <span class="stat-desc">employees reached through organizational interventions across the Balkans</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-num">100+</span>
+      <span class="stat-desc">certified Social Mentors trained and deployed in 5 countries</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-num">25 yrs</span>
+      <span class="stat-desc">of embedded organizational work — from GIZ and World Bank to automotive supply chain</span>
+    </div>
+    <div class="stat-row">
+      <span class="stat-num">6 mo.</span>
+      <span class="stat-desc">our standard engagement horizon — because real change does not happen in a day</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CLOSING ── -->
+<section class="closing">
+  <p class="closing-label">March 16th · 15:00 · LEAR Skopje</p>
+  <blockquote class="closing-quote">
+    "We do not come to tell you what your people need to learn.<br>
+    We come to <em>listen</em> — and then design something<br>that has never existed before."
+  </blockquote>
+  <div class="closing-meta">
+    Nebojsha Ilijevski &nbsp;·&nbsp; HolistiX<br>
+    <a href="/cdn-cgi/l/email-protection#f7999295989d849f96b79f989b9e84839e9cd99a9c"><span class="__cf_email__" data-cfemail="b6d8d3d4d9dcc5ded7f6ded9dadfc5c2dfdd98dbdd">[email&#160;protected]</span></a> &nbsp;·&nbsp;
+    <a href="https://holistik.mk" target="_blank">holistik.mk</a>
+  </div>
+  <div class="closing-date">Looking forward to the conversation</div>
+</section>
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scenario toggle
+  function toggleScenario(id) {
+    const panels = document.querySelectorAll('.scenario-panel');
+    const btns = document.querySelectorAll('.scenario-btn');
+    const target = document.getElementById('panel-' + id);
+    const isOpen = target.classList.contains('visible');
+
+    panels.forEach(p => p.classList.remove('visible'));
+    btns.forEach(b => b.classList.remove('active'));
+
+    if (!isOpen) {
+      target.classList.add('visible');
+      // mark active button
+      const btnsArr = Array.from(btns);
+      const scenarios = ['star','genz','urgency','voice'];
+      const idx = scenarios.indexOf(id);
+      if (idx > -1) btnsArr[idx].classList.add('active');
+      target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  // Card toggle
+  function toggleCard(card) {
+    const detail = card.querySelector('.card-detail');
+    const isOpen = detail.classList.contains('visible');
+    document.querySelectorAll('.card-detail').forEach(d => d.classList.remove('visible'));
+    document.querySelectorAll('.approach-card').forEach(c => c.classList.remove('open'));
+    if (!isOpen) {
+      detail.classList.add('visible');
+      card.classList.add('open');
+    }
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.
